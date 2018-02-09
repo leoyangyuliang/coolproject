@@ -27,7 +27,7 @@ public class CalendarActivity extends AppCompatActivity{
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int y, int m, int d){
                 String date = (m+1) + "/" + d + "/" + y;
-                Intent intent = new Intent(CalendarActivity.this, JournalActivity.class);
+                Intent intent = new Intent(CalendarActivity.this, Options.class);
                 intent.putExtra("date",date);
                 startActivity(intent);
             }

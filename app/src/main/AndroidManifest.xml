@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CalendarActivity"></activity>
+        <activity android:name=".Options"></activity>
         <activity android:name=".JournalActivity"></activity>
     </application>
 
