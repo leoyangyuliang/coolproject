@@ -9,5 +9,6 @@ Calendar + Journal
  https://developer.android.com/reference/android/widget/CalendarView.html
 - CalendarView Youtube Vedio
 https://youtu.be/hHjFIG0TtA0
--File API
+-Links help with files
+https://stackoverflow.com/questions/14376807/how-to-read-write-string-from-a-file-in-android
 https://developer.android.com/training/data-storage/files.html#java
