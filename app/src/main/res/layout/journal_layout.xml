@@ -6,34 +6,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <EditText
         android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_height="272dp"
+        android:layout_above="@+id/btnSaveJournal"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="13dp"
         android:ems="10"
+        android:gravity="top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:scrollbars="vertical"/>
 
+    <Button
+        android:id="@+id/btnSaveJournal"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_above="@+id/btnDeleteJournal"
+        android:layout_centerHorizontal="true"
+        android:text="Save Journal" />
+
+    <Button
+        android:id="@+id/btnDeleteJournal"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_above="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:text="Delete Journal" />
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="47dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:text="Go To Main Page"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="361dp" />
+        android:layout_centerHorizontal="true"
+ />
 
 </RelativeLayout>
