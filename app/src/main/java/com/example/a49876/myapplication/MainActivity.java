@@ -13,17 +13,15 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView theDate;
     private Button btnGoCalendar;
-
+    private Button btnGoAllJournal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        theDate = (TextView) findViewById(R.id.date);
-        btnGoCalendar = (Button) findViewById(R.id.btnGoCalendar);
 
-        Intent incomingIntent = getIntent();
-        String date = incomingIntent.getStringExtra("date");
-        theDate.setText(date);
+        btnGoCalendar = (Button) findViewById(R.id.btnGoCalendar);
+        btnGoAllJournal = (Button) findViewById(R.id.btnGoAllJournal);
+
 
         btnGoCalendar.setOnClickListener(new View.OnClickListener(){
            @Override
@@ -33,5 +31,6 @@ public class MainActivity extends AppCompatActivity {
                startActivity(intent);
            }
         });
+
     }
 }

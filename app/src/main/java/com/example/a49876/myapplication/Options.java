@@ -18,12 +18,14 @@ public class Options extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.options_layout);
         goJournalFromOption = (Button) findViewById(R.id.goJournalFromChoicePage);
-
-
+        final Intent intent = new Intent(Options.this, JournalActivity.class);
+        Intent incomingIntent = getIntent();
+        final String date = incomingIntent.getStringExtra("date");
+        setTitle(date);
         goJournalFromOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Options.this, JournalActivity.class);
+                intent.putExtra("date",date);
                 startActivity(intent);
             }
         });
