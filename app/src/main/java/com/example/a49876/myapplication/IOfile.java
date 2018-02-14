@@ -16,7 +16,7 @@ public class IOfile {
     public void writeFile(File file, String data){
         FileOutputStream stream = null;
         try {
-            stream = new FileOutputStream(file,true);
+            stream = new FileOutputStream(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
