@@ -16,13 +16,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnGoCalendar"
         android:text="Go To Calendar"/>
-
     <Button
-        android:id="@+id/btnGoAllJournal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:id="@+id/btnGoAllJournal"
         android:layout_below="@+id/btnGoCalendar"
-        android:text="See all jounals" />
+        android:text="Coming..."/>
 </RelativeLayout>
