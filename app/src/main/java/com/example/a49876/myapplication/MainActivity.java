@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
                startActivity(intent);
            }
         });
-<<<<<<< HEAD
         btnGoAllJournal.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
@@ -41,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-=======
->>>>>>> a3497dd4235196e34c3d6f9823680274d01f1fef
+
     }
 }
