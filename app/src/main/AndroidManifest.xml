@@ -20,8 +20,9 @@
         <activity android:name=".CalendarActivity"></activity>
         <activity android:name=".Options"></activity>
         <activity android:name=".JournalActivity"
-            android:windowSoftInputMode="adjustPan"
-            ></activity>
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity android:name=".EventActivity"></activity>
     </application>
 
 </manifest>
