@@ -8,6 +8,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/**
+ * Created by 49876 on 2/10/2018.
+ */
+
 public class IOfile {
     public void writeFile(File file, String data){
         FileOutputStream stream = null;

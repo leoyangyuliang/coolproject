@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,14 +18,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
-        // Unused button at the moment
-        this.btnGoAllJournal = findViewById(R.id.btnGoAllJournal);
+        btnGoCalendar = (Button) findViewById(R.id.btnGoCalendar);
+        btnGoAllJournal = (Button) findViewById(R.id.btnGoAllJournal);
 
-        // Display the calendar activity
-        this.btnGoCalendar = findViewById(R.id.btnGoCalendar);
-        this.btnGoCalendar.setOnClickListener(new View.OnClickListener(){
+
+        btnGoCalendar.setOnClickListener(new View.OnClickListener(){
            @Override
             public void onClick(View view)
            {
@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
                startActivity(intent);
            }
         });
-<<<<<<< HEAD
         btnGoAllJournal.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
@@ -41,7 +40,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-=======
->>>>>>> a3497dd4235196e34c3d6f9823680274d01f1fef
     }
 }
