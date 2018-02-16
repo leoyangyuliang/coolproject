@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView theDate;
     private Button btnGoCalendar;
     private Button btnGoAllJournal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
                startActivity(intent);
            }
         });
-
+        btnGoAllJournal.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(MainActivity.this, allJournalActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
