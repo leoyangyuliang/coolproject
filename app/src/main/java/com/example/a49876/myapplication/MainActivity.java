@@ -5,13 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.TextView;
 
+/**
+ * The page displayed when first opening the application
+ */
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-
-    private TextView theDate;
     private Button btnGoCalendar;
     private Button btnGoAllJournal;
 
@@ -20,10 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // View the calender page
         btnGoCalendar = (Button) findViewById(R.id.btnGoCalendar);
-        btnGoAllJournal = (Button) findViewById(R.id.btnGoAllJournal);
-
-
         btnGoCalendar.setOnClickListener(new View.OnClickListener(){
            @Override
             public void onClick(View view)
@@ -32,11 +29,14 @@ public class MainActivity extends AppCompatActivity {
                startActivity(intent);
            }
         });
+
+        // View the all journals page
+        btnGoAllJournal = (Button) findViewById(R.id.btnGoAllJournal);
         btnGoAllJournal.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(MainActivity.this, allJournalActivity.class);
+                Intent intent = new Intent(MainActivity.this, AllJournalActivity.class);
                 startActivity(intent);
             }
         });

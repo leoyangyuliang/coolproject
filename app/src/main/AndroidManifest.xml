@@ -18,11 +18,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".CalendarActivity"></activity>
-        <activity android:name=".Options"></activity>
+        <activity android:name=".OptionsActivity"></activity>
         <activity android:name=".JournalActivity"
             android:windowSoftInputMode="adjustPan"
             ></activity>
-        <activity android:name=".allJournalActivity"></activity>
+        <activity android:name=".AllJournalActivity"></activity>
+        <activity android:name=".EventsActivity"></activity>
     </application>
 
 </manifest>

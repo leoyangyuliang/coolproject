@@ -1,7 +1,5 @@
 package com.example.a49876.myapplication;
 
-
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -14,48 +12,38 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import com.example.a49876.myapplication.IOfile;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.BufferedWriter;
-import java.io.IOException;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-
 
 /**
- * Created by 49876 on 2/8/2018.
+ * Manages and displays the journals for a date
  */
-
 public class JournalActivity extends AppCompatActivity{
-
     private static final String TAG = "JournalActivity";
-
     private Button btnGoMain;
     private Button btnSaveJournal;
     private Button btnDeleteJournal;
     private EditText editText;
     private String journal;
-    private com.example.a49876.myapplication.IOfile IOfile = new com.example.a49876.myapplication.IOfile();
+    private FileUtils IOfile = new FileUtils();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.journal_layout);
 
-        //define all the widgets
+        // Define all the widgets
         editText = findViewById(R.id.editText);
         btnGoMain = (Button) findViewById(R.id.button);
         btnSaveJournal = (Button) findViewById(R.id.btnSaveJournal);
         btnDeleteJournal =  (Button) findViewById(R.id.btnDeleteJournal);
-        //get date
+
+        // Retrieve the date from incoming intent
         Intent incomingIntent = getIntent();
         final String filename = incomingIntent.getStringExtra("date")+".txt";
         setTitle("Journal of "+filename);
-        //render existing journal
+
+        // Render existing journals
         File path = getFilesDir();
         Log.e("path", path.toString());
         File file = new File(path, filename);
@@ -63,7 +51,7 @@ public class JournalActivity extends AppCompatActivity{
         Log.e("journal activity",IOfile.readFile(file));
         editText.setText(IOfile.readFile(file));
 
-
+        // View the main page
         btnGoMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +59,8 @@ public class JournalActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+
+        // Button to save the contents of a journal
         btnSaveJournal.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
@@ -83,23 +73,22 @@ public class JournalActivity extends AppCompatActivity{
                 IOfile.writeFile(file,journal);
 
                 AlertDialog alertDialog = new AlertDialog.Builder(JournalActivity.this).create();
-                alertDialog.setTitle("Congrats!!");
-                alertDialog.setMessage("Your super journal has been saved in internal storage.");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK, go away",
+                alertDialog.setTitle("Success!");
+                alertDialog.setMessage("Your journal has been saved.");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                             }
                         });
                 alertDialog.show();
-
             }
         });
 
+        // Button to delete an existing journal
         btnDeleteJournal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(JournalActivity.this);
                 builder.setCancelable(true);
                 builder.setTitle("Delete Journal");
@@ -119,14 +108,9 @@ public class JournalActivity extends AppCompatActivity{
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 });
-
                 AlertDialog dialog = builder.create();
                 dialog.show();
-
             }
         });
-
-
-}
-
+    }
 }
