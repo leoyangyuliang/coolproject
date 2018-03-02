@@ -9,10 +9,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * Created by 49876 on 2/10/2018.
+ * A utility class to handle file input and output
  */
-
-public class IOfile {
+public class FileUtils {
+    // Save data into a file
     public void writeFile(File file, String data){
         FileOutputStream stream = null;
         try {
@@ -25,7 +25,6 @@ public class IOfile {
                 stream.write(data.getBytes());
                 Log.e("writing files","writed");
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -38,8 +37,9 @@ public class IOfile {
             }
         }
     }
-    public String readFile(File file) {
 
+    // Read data from a file
+    public String readFile(File file) {
         int length = (int) file.length();
         byte[] bytes = new byte[length];
         FileInputStream in = null;
@@ -64,9 +64,7 @@ public class IOfile {
             String contents = new String(bytes);
             Log.e("Reading files", contents);
             return contents;
-        }
-        else
-        {
+        } else {
             return "";
         }
     }
