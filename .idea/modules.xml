@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://F:\coolproject\app\app.iml" filepath="F:\coolproject\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/coolproject.iml" filepath="$PROJECT_DIR$/coolproject.iml" />
       <module fileurl="file://F:\cpsc362_project\coolproject.iml" filepath="F:\cpsc362_project\coolproject.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cpsc362_project.iml" filepath="$PROJECT_DIR$/cpsc362_project.iml" />
+      <module fileurl="file://F:\coolproject\cpsc362_project.iml" filepath="F:\coolproject\cpsc362_project.iml" />
     </modules>
   </component>
 </project>
