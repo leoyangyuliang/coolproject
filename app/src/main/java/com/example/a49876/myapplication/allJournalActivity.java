@@ -9,6 +9,7 @@ public class AllJournalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.all_journal);
+        setTitle("All Journals");
+        setContentView(R.layout.all_journal_layout);
     }
 }

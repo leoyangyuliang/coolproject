@@ -25,7 +25,6 @@ public class JournalActivity extends AppCompatActivity{
     private Button btnDeleteJournal;
     private EditText editText;
     private String journal;
-    private FileUtils IOfile = new FileUtils();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,16 +39,17 @@ public class JournalActivity extends AppCompatActivity{
 
         // Retrieve the date from incoming intent
         Intent incomingIntent = getIntent();
-        final String filename = incomingIntent.getStringExtra("date")+".txt";
-        setTitle("Journal of "+filename);
+        String date = incomingIntent.getStringExtra("date");
+        final String filename = date + ".txt";
+        setTitle("Journal of " + date);
 
         // Render existing journals
         File path = getFilesDir();
         Log.e("path", path.toString());
         File file = new File(path, filename);
-        Log.e("show date",filename);
-        Log.e("journal activity",IOfile.readFile(file));
-        editText.setText(IOfile.readFile(file));
+        Log.e("show date", filename);
+        Log.e("journal activity", FileUtils.readFile(file));
+        editText.setText(FileUtils.readFile(file));
 
         // View the main page
         btnGoMain.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +70,7 @@ public class JournalActivity extends AppCompatActivity{
                 File path = getFilesDir();
                 File file = new File(path, filename);
 
-                IOfile.writeFile(file,journal);
+                FileUtils.writeFile(file, journal);
 
                 AlertDialog alertDialog = new AlertDialog.Builder(JournalActivity.this).create();
                 alertDialog.setTitle("Success!");

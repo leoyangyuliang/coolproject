@@ -13,11 +13,12 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private Button btnGoCalendar;
     private Button btnGoAllJournal;
+    private Button btnGoWorklist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_layout);
 
         // View the calender page
         btnGoCalendar = (Button) findViewById(R.id.btnGoCalendar);
@@ -37,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 Intent intent = new Intent(MainActivity.this, AllJournalActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // View the work list page
+        btnGoWorklist = (Button) findViewById(R.id.btnGoWorklist);
+        btnGoWorklist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, WorklistActivity.class);
                 startActivity(intent);
             }
         });

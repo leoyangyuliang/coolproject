@@ -23,7 +23,7 @@
             android:windowSoftInputMode="adjustPan"
             ></activity>
         <activity android:name=".AllJournalActivity"></activity>
-        <activity android:name=".EventsActivity"></activity>
+        <activity android:name=".WorklistActivity"></activity>
     </application>
 
 </manifest>
