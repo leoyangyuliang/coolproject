@@ -14,7 +14,8 @@ public class AllJournalActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         String[] ary;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.all_journal);
+        setContentView(R.layout.all_journal_layout);
+
         File file = getFilesDir();
         File path = new File(file, "alljournal.bin");
         WriteObject writeobject = new WriteObject();

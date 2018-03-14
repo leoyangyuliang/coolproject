@@ -46,7 +46,6 @@ public class JournalActivity extends AppCompatActivity{
         // Render existing journals
 
         File path = getFilesDir();
-        IOfile = new FileUtils(path);
         Log.e("path", path.toString());
         File file = new File(path, filename);
         Log.e("show date", filename);
