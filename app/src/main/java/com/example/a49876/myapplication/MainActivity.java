@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
            }
         });
 
-        /*
+
         // View the all journals page
         btnGoAllJournal = (Button) findViewById(R.id.btnGoAllJournal);
         btnGoAllJournal.setOnClickListener(new View.OnClickListener(){
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, AllJournalActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
         // View the work list page
         btnGoWorklist = (Button) findViewById(R.id.btnGoWorklist);
