@@ -1,7 +1,7 @@
 package com.example.a49876.myapplication;
 
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,7 +12,17 @@ import java.io.IOException;
  * A utility class to handle file input and output
  */
 public class FileUtils {
+    private File path;
+
+    public FileUtils(){}
+
+    public FileUtils(File path){
+        this.path = path;
+        //get internal storage path
+    }
+
     // Save data into a file
+
     public static void writeFile(File file, String data){
         FileOutputStream stream = null;
         try {

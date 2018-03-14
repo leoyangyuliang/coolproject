@@ -44,6 +44,7 @@ public class JournalActivity extends AppCompatActivity{
         setTitle("Journal of " + date);
 
         // Render existing journals
+
         File path = getFilesDir();
         Log.e("path", path.toString());
         File file = new File(path, filename);
