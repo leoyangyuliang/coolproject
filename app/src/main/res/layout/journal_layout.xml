@@ -7,19 +7,18 @@
     android:layout_height="match_parent">
 
 
-
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
-        android:layout_centerHorizontal="true"
         android:layout_height="272dp"
         android:layout_above="@+id/btnSaveJournal"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
         android:ems="10"
         android:gravity="top"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical" />
 
     <Button
         android:id="@+id/btnSaveJournal"
