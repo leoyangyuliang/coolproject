@@ -22,9 +22,8 @@ public class FileUtils {
     }
 
     // Save data into a file
-    public void writeFile(File file, String data){
 
-
+    public static void writeFile(File file, String data){
         FileOutputStream stream = null;
         try {
             stream = new FileOutputStream(file);
@@ -50,7 +49,7 @@ public class FileUtils {
     }
 
     // Read data from a file
-    public String readFile(File file) {
+    public static String readFile(File file) {
         int length = (int) file.length();
         byte[] bytes = new byte[length];
         FileInputStream in = null;

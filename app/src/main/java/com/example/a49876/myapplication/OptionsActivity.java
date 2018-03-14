@@ -11,8 +11,7 @@ import android.widget.Button;
  */
 public class OptionsActivity extends AppCompatActivity {
     private static final String TAG = "OptionsActivity";
-    private Button btnGoJournal;
-    private Button btnGoEvents;
+    private Button btnJournal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,25 +21,14 @@ public class OptionsActivity extends AppCompatActivity {
         // Create an intent, and store the selected date
         Intent incomingIntent = getIntent();
         final String date = incomingIntent.getStringExtra("date");
-        setTitle(date);
+        setTitle("Features for " + date);
 
         // View the journal page
-        btnGoJournal = (Button) findViewById(R.id.goJournalFromChoicePage);
-        btnGoJournal.setOnClickListener(new View.OnClickListener() {
+        btnJournal = (Button) findViewById(R.id.btnJournal);
+        btnJournal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(OptionsActivity.this, JournalActivity.class);
-                intent.putExtra("date", date);
-                startActivity(intent);
-            }
-        });
-
-        // View the events page
-        btnGoEvents = (Button) findViewById(R.id.goEventsFromChoicePage);
-        btnGoEvents.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(OptionsActivity.this, EventsActivity.class);
                 intent.putExtra("date", date);
                 startActivity(intent);
             }
