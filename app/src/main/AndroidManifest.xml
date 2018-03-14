@@ -22,7 +22,6 @@
         <activity android:name=".JournalActivity"
             android:windowSoftInputMode="adjustPan"
             ></activity>
-        <activity android:name=".AllJournalActivity"></activity>
         <activity android:name=".WorklistActivity"></activity>
     </application>
 
