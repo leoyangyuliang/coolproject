@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  * Manages and displays the journals for a date
@@ -39,8 +40,8 @@ public class JournalActivity extends AppCompatActivity{
 
         // Retrieve the date from incoming intent
         Intent incomingIntent = getIntent();
-        String date = incomingIntent.getStringExtra("date");
-        final String filename = date + ".txt";
+        final String date = incomingIntent.getStringExtra("date");
+        final String filename = date+".txt";
         setTitle("Journal of " + date);
 
         // Render existing journals
@@ -66,11 +67,24 @@ public class JournalActivity extends AppCompatActivity{
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
+
+
                 journal = editText.getText().toString();
                 Log.e("journal = ", journal);
                 File path = getFilesDir();
                 File file = new File(path, filename);
 
+                //test if the journal does not exist
+                if(!file.exists())
+                {
+                    FileUtils fileutils = new FileUtils();
+                    ArrayList<String> ary = new ArrayList<String>();;
+                    if(fileutils.readFromBinary(file)!=null) {
+                        ary = (ArrayList) fileutils.readFromBinary(file);
+                    }
+                    ary.add(date);
+                    fileutils.writeToBinary(ary,path,"AllJournals.bin");
+                }
                 FileUtils.writeFile(file, journal);
 
                 AlertDialog alertDialog = new AlertDialog.Builder(JournalActivity.this).create();
