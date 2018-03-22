@@ -1,5 +1,6 @@
 package com.example.a49876.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +22,6 @@ public class AllJournalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setTitle("All Journals");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.all_journal_layout);
         FileUtils fileutils = new FileUtils();
@@ -36,8 +36,9 @@ public class AllJournalActivity extends AppCompatActivity {
         //convert arraylist to array
         if(!alljournalslist.isEmpty()) {
             Log.e("alljournal(0)",alljournalslist.get(0));
-
+            //change array list to string array
             alljournals = alljournalslist.toArray(new String[alljournalslist.size()]);
+            //Log.e("alljournals",alljournals[0]);
         }
         //create list view
         allJournalListView = (ListView) findViewById(R.id.allJournalListView);
@@ -47,6 +48,11 @@ public class AllJournalActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                String date = String.valueOf(adapterView.getItemAtPosition(i));
+                Log.e("show date", date);
+                Intent intent = new Intent(AllJournalActivity.this, JournalActivity.class);
+                intent.putExtra("date", date);
+                startActivity(intent);
             }
         });
 
