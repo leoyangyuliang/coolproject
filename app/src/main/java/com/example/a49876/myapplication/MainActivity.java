@@ -1,10 +1,16 @@
 package com.example.a49876.myapplication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import java.io.File;
+import java.util.ArrayList;
 
 /**
  * The page displayed when first opening the application
@@ -38,8 +44,35 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(MainActivity.this, AllJournalActivity.class);
-                startActivity(intent);
+                FileUtils fileutils = new FileUtils();
+                File path = getFilesDir();
+                File file = new File(path, "AllJournals.bin");
+                ArrayList<String> alljournalslist = (ArrayList) fileutils.readFromBinary(file);
+                if(alljournalslist.isEmpty()){
+                    AlertDialog.Builder builder;
+
+                    builder = new AlertDialog.Builder(MainActivity.this);
+
+                    builder.setTitle("No Journal")
+                            .setMessage("Do you want to start your first Journal?")
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+                                    startActivity(intent);
+                                }
+                            })
+                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                }
+                            })
+
+                            .show();
+                }
+                else {
+                    Intent intent = new Intent(MainActivity.this, AllJournalActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
