@@ -74,13 +74,20 @@ public class JournalActivity extends AppCompatActivity{
                 File path = getFilesDir();
                 File file = new File(path, filename);
 
+                //path of alljournals
+                File alljournal_file = new File(path,"AllJournals.bin");
+
                 //test if the journal does not exist
                 if(!file.exists())
                 {
                     FileUtils fileutils = new FileUtils();
-                    ArrayList<String> ary = new ArrayList<String>();;
-                    if(fileutils.readFromBinary(file)!=null) {
-                        ary = (ArrayList) fileutils.readFromBinary(file);
+                    ArrayList<String> ary = new ArrayList<String>();
+                    if(alljournal_file.exists()) {
+                        if(fileutils.readFromBinary(alljournal_file)==null){
+                            Log.e(TAG, "reading null" );
+                        }
+                        ary = (ArrayList) fileutils.readFromBinary(alljournal_file);
+                        Log.e("alljournal file exist","true");
                     }
                     ary.add(date);
                     fileutils.writeToBinary(ary,path,"AllJournals.bin");
@@ -113,9 +120,24 @@ public class JournalActivity extends AppCompatActivity{
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 File path = getFilesDir();
+                                File alljournal_file = new File(path,"AllJournals.bin" );
                                 File file = new File(path, filename);
                                 file.delete();
                                 editText.setText("");
+                                if(!file.exists())
+                                {
+                                    FileUtils fileutils = new FileUtils();
+                                    ArrayList<String> ary = new ArrayList<String>();
+                                    if(alljournal_file.exists()) {
+                                        if(fileutils.readFromBinary(alljournal_file)==null){
+                                            Log.e(TAG, "reading null" );
+                                        }
+                                        ary = (ArrayList) fileutils.readFromBinary(alljournal_file);
+                                        Log.e("alljournal file exist","true");
+                                    }
+                                    ary.remove(date);
+                                    fileutils.writeToBinary(ary,path,"AllJournals.bin");
+                                }
                             }
                         });
                 builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
