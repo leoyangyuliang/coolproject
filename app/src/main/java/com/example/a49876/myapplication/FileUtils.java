@@ -21,7 +21,7 @@ public class FileUtils {
     private FileInputStream inFile;
     private ObjectInputStream inStream;
 
-    public FileUtils(){}
+    public FileUtils() {}
 
     public FileUtils(File path){
         this.path = path;
