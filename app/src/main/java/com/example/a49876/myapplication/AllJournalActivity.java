@@ -47,6 +47,8 @@ public class AllJournalActivity extends AppCompatActivity {
             //create list view
             allJournalListView = (ListView) findViewById(R.id.allJournalListView);
             ArrayAdapter adapter = new ArrayAdapter(this, R.layout.textview, alljournals);
+            //CustomAdaptor my_adapter = new CustomAdaptor(this, alljournalslist);
+            //allJournalListView.setAdapter(my_adapter);
             allJournalListView.setAdapter(adapter);
             allJournalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
