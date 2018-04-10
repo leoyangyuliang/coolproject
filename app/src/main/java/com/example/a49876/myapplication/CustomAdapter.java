@@ -11,15 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by 49876 on 4/5/2018.
+ * Adapter for loading elements on a view.
  */
-public class CustomAdaptor extends ArrayAdapter<String>
-{
+public class CustomAdapter extends ArrayAdapter<String> {
     private Context context;
     private List<String> strings;
 
-    public CustomAdaptor (Context context, List<String> strings)
-    {
+    public CustomAdapter(Context context, List<String> strings) {
         super(context, R.layout.test, strings);
         this.context = context;
         this.strings = new ArrayList<String>();
@@ -27,8 +25,7 @@ public class CustomAdaptor extends ArrayAdapter<String>
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
+    public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -38,7 +35,6 @@ public class CustomAdaptor extends ArrayAdapter<String>
         TextView your_second_text_view = (TextView) rowView.findViewById(R.id.addBtn);
 
         your_first_text_view.setText(strings.get(position));
-
 
         return rowView;
     }
