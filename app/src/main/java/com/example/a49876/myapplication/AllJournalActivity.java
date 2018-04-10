@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CalendarView;
 import android.widget.ListView;
 
 import java.io.File;
@@ -33,7 +32,6 @@ public class AllJournalActivity extends AppCompatActivity {
         File path = getFilesDir();
         File file = new File(path, "AllJournals.bin");
 
-
         //get all journals arraylist
         alljournalslist = (ArrayList) fileutils.readFromBinary(file);
 
@@ -47,13 +45,12 @@ public class AllJournalActivity extends AppCompatActivity {
             //create list view
             allJournalListView = (ListView) findViewById(R.id.allJournalListView);
             ArrayAdapter adapter = new ArrayAdapter(this, R.layout.textview, alljournals);
-            //CustomAdaptor my_adapter = new CustomAdaptor(this, alljournalslist);
+            //CustomAdapter my_adapter = new CustomAdapter(this, alljournalslist);
             //allJournalListView.setAdapter(my_adapter);
             allJournalListView.setAdapter(adapter);
             allJournalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                     String date = String.valueOf(adapterView.getItemAtPosition(i));
                     Log.e("show date", date);
                     Intent intent = new Intent(AllJournalActivity.this, JournalActivity.class);
@@ -61,10 +58,7 @@ public class AllJournalActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
-        }
-        else
-        {
+        } else {
             AlertDialog.Builder builder;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
@@ -81,14 +75,10 @@ public class AllJournalActivity extends AppCompatActivity {
                     })
                     .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            // do nothing
+                            return;
                         }
                     })
-
                     .show();
         }
     }
-
-
-
 }
