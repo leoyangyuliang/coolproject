@@ -4,8 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.io.Serializable;
@@ -25,15 +24,16 @@ public class WorklistActivity extends AppCompatActivity implements Serializable 
         strings.add("hello");
         strings.add("world");
         strings.add("!");
+        final WorklistAdapter adapter = new WorklistAdapter(this, strings);
         ListView listView = findViewById(R.id.worklistListView);
-        final ArrayAdapter adapter = new ArrayAdapter(this, R.layout.textview, strings);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        Button btnAdd = findViewById(R.id.btnAdd);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                adapter.remove(adapter.getItem(position));
+            public void onClick(View v) {
+                adapter.add("to-do");
             }
         });
-
     }
 }
