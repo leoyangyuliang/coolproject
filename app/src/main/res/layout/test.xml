@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listview_layout"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/listview_layout">
+    android:layout_height="wrap_content">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/text1"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:gravity="center"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 
 <EditText xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/text1"
@@ -17,9 +26,8 @@
     />
     <Button
         android:id="@+id/addBtn"
-        android:text="Add New Item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="addItems"/>
-
+        android:onClick="addItems"
+        android:text="Add New Item" />
 </LinearLayout>

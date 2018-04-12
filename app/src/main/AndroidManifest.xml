@@ -18,7 +18,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".CalendarActivity"></activity>
-        <activity android:name=".OptionsActivity"></activity>
         <activity android:name=".JournalActivity"
             android:windowSoftInputMode="adjustPan"
             ></activity>
