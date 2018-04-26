@@ -1,5 +1,6 @@
 package com.example.a49876.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -70,6 +71,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
         if (user != null) {
                 Log.e("login","success");
+                Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                startActivity(intent);
         } else {
             Log.e("login","fail");
 
@@ -80,8 +83,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        updateUI(null);
     }
 
 
