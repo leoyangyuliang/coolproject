@@ -73,7 +73,8 @@ public class JournalActivity extends AppCompatActivity{
                 Log.e("journal = ", journal);
                 File path = getFilesDir();
                 File file = new File(path, filename);
-
+                //wrie to database
+                FileUtils.writeJournalToDB(date,journal);
                 //path of alljournals
                 File alljournal_file = new File(path,"AllJournals.bin");
 
