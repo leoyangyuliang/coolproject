@@ -47,8 +47,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         signup.setOnClickListener(this);
     }
 
-
-    //sign in
+    // sign in
     public void logIn(String email, String password) {
 
         mAuth.signInWithEmailAndPassword(email, password)
@@ -71,7 +70,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
     }
-
+  
     //sign up
     public void signUp(String email, String password){
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -97,10 +96,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
     }
-
-
-
-
+  
     private void updateUI(FirebaseUser user) {
 
         if (user != null) {
@@ -116,7 +112,6 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 //    public void onStart() {
 //        super.onStart();
 //    }
-
 
     @Override
     public void onClick(View v) {
@@ -134,6 +129,5 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             }
         }
     }
-
 }
 

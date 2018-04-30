@@ -20,15 +20,15 @@ public class MainActivity extends AppCompatActivity {
     private Button btnGoCalendar;
     private Button btnGoAllJournal;
     private Button btnGoWorklist;
+    private Button btnGraph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
 
         // View the calender page
-        btnGoCalendar = (Button) findViewById(R.id.btnGoCalendar);
+        btnGoCalendar = findViewById(R.id.btnGoCalendar);
         btnGoCalendar.setOnClickListener(new View.OnClickListener(){
            @Override
             public void onClick(View view)
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // View the all journals page
-        btnGoAllJournal = (Button) findViewById(R.id.btnGoAllJournal);
+        btnGoAllJournal = findViewById(R.id.btnGoAllJournal);
         btnGoAllJournal.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
@@ -78,11 +78,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // View the work list page
-        btnGoWorklist = (Button) findViewById(R.id.btnGoWorklist);
+        btnGoWorklist = findViewById(R.id.btnGoWorklist);
         btnGoWorklist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, WorklistActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // View the example graph
+        btnGraph = findViewById(R.id.btnGoGraph);
+        btnGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GraphActivity.class);
                 startActivity(intent);
             }
         });
