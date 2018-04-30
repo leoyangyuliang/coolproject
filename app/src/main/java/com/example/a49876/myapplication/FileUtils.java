@@ -1,7 +1,15 @@
 package com.example.a49876.myapplication;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,6 +18,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.security.auth.login.LoginException;
 
 /**
  * A utility class to handle file input and output
@@ -137,4 +149,32 @@ public class FileUtils {
         } // ClassNotFound
         return obj;
     }
+
+    public static void writeJournalToDB(String date, String journal){
+        // Access a Cloud Firestore instance from your Activity
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        // Create a new user with a first and last name
+        Map<String, Object> user = new HashMap<>();
+        user.put(date, journal);
+        // Add a new document with a generated ID
+        db.collection("users").document(LogInActivity.user.getEmail())
+                .set(user, SetOptions.merge())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void documentReference) {
+                        Log.e("onsuccess", "DocumentSnapshot added with ID: " + LogInActivity.user.getEmail());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("on failure", "Error adding document", e);
+                    }
+                });
+    }
+    public void readJournalFromDB(){
+
+    }
+
+
 }
