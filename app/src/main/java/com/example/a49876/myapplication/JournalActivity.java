@@ -208,6 +208,7 @@ public class JournalActivity extends AppCompatActivity{
                                     public void onSuccess(Void aVoid) {
                                         Log.d(TAG, "DocumentSnapshot successfully deleted!");
                                         editText.setText("");
+
                                     }
                                 })
                                         .addOnFailureListener(new OnFailureListener() {
