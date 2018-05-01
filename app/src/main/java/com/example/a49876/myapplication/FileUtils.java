@@ -4,10 +4,15 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.SetOptions;
 
 import java.io.File;
@@ -32,17 +37,18 @@ public class FileUtils {
     private ObjectOutputStream outStream;
     private FileInputStream inFile;
     private ObjectInputStream inStream;
+    public String journal;
+    public FileUtils() {
+    }
 
-    public FileUtils() {}
-
-    public FileUtils(File path){
+    public FileUtils(File path) {
         this.path = path;
         //get internal storage path
     }
 
     // Save data into a file
 
-    public static void writeFile(File file, String data){
+    public static void writeFile(File file, String data) {
         FileOutputStream stream = null;
 
 
@@ -54,7 +60,7 @@ public class FileUtils {
         try {
             if (stream != null) {
                 stream.write(data.getBytes());
-                Log.e("writing files","writed");
+                Log.e("writing files", "writed");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -104,7 +110,7 @@ public class FileUtils {
     //write Object
     public void writeToBinary(Object obj, File path, String fileName) {
         // combind path+filename
-        path = new File(path,fileName);
+        path = new File(path, fileName);
 
         //writing binary file
         try { // try to open and write the file
@@ -120,7 +126,7 @@ public class FileUtils {
 
     //read object
     public Object readFromBinary(File path) {
-        Object obj= null;
+        Object obj = null;
         try { // try to open and read the file
             inFile = new FileInputStream(path);
             inStream = new ObjectInputStream(inFile);
@@ -150,31 +156,7 @@ public class FileUtils {
         return obj;
     }
 
-    public static void writeJournalToDB(String date, String journal){
-        // Access a Cloud Firestore instance from your Activity
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        // Create a new user with a first and last name
-        Map<String, Object> user = new HashMap<>();
-        user.put(date, journal);
-        // Add a new document with a generated ID
-        db.collection("users").document(LogInActivity.user.getEmail())
-                .set(user, SetOptions.merge())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void documentReference) {
-                        Log.e("onsuccess", "DocumentSnapshot added with ID: " + LogInActivity.user.getEmail());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("on failure", "Error adding document", e);
-                    }
-                });
-    }
-    public void readJournalFromDB(){
-
-    }
-
 
 }
+
+
