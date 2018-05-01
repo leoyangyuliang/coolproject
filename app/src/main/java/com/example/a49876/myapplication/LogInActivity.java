@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private TextView email, password;
     private Button login, signup;
     public static FirebaseUser user;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +47,13 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         login.setOnClickListener(this);
         signup = findViewById(R.id.signup);
         signup.setOnClickListener(this);
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     // sign in
     public void logIn(String email, String password) {
-
+        progressBar.setVisibility(View.VISIBLE);
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -58,10 +62,12 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                             // Sign in success, update UI with the signed-in user's information
                             Log.e("Login", "signInWithEmail:success");
                             user = mAuth.getCurrentUser();
+                            progressBar.setVisibility(View.INVISIBLE);
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.e("login", "signInWithEmail:failure", task.getException());
+                            progressBar.setVisibility(View.INVISIBLE);
                             Toast.makeText(LogInActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
@@ -91,7 +97,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
-
+                        progressBar.setVisibility(View.INVISIBLE);
                         // ...
                     }
                 });
@@ -116,6 +122,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         Button b = (Button) v;
+        progressBar.setVisibility(View.VISIBLE);
         switch(b.getId()) {
             case R.id.login:
             {
