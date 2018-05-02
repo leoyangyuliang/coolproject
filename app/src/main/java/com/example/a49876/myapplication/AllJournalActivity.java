@@ -31,6 +31,7 @@ public class AllJournalActivity extends AppCompatActivity {
     private String[] alljournals;
     private int progress;
     private ProgressBar progressBar;
+    private FirebaseFirestore db;
     private static final String TAG = "AllJournalActivity";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class AllJournalActivity extends AppCompatActivity {
         File path = getFilesDir();
         File file = new File(path, "AllJournals.bin");
         //get all journals from db
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
         db.collection("users").document(LogInActivity.user.getEmail())
                 .collection("journals")
                 .get()
