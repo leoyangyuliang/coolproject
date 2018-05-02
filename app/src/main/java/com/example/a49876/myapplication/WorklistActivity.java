@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,6 +38,7 @@ public class WorklistActivity extends AppCompatActivity implements Serializable 
     private ArrayList<String> strings;
     private ListView listView;
     private Map<String,Object> field;
+    private ProgressBar progressBar;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,8 @@ public class WorklistActivity extends AppCompatActivity implements Serializable 
         strings = new ArrayList<String>();
         strings.add("Write your work list here");
         //initialization
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
         db = FirebaseFirestore.getInstance();
         DocumentReference ref = db.collection("users").document(LogInActivity.user.getEmail())
                 .collection("worklists").document("worklist");
@@ -63,7 +67,6 @@ public class WorklistActivity extends AppCompatActivity implements Serializable 
                         adapter = new WorklistAdapter(WorklistActivity.this, strings);
                         listView = findViewById(R.id.worklistListView);
                         listView.setAdapter(adapter);
-                        Log.e("strings ",":"+strings);
                     } else {
                         Log.e("reading from DB", "no worklist found");
                         adapter = new WorklistAdapter(WorklistActivity.this, strings);
@@ -74,6 +77,7 @@ public class WorklistActivity extends AppCompatActivity implements Serializable 
                 } else {
                     Log.e("task","failed when reading worklist from DB");
                 }
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
 

@@ -12,7 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,7 +28,11 @@ import com.google.firebase.firestore.SetOptions;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 /**
@@ -40,7 +46,9 @@ public class JournalActivity extends AppCompatActivity{
     private EditText editText;
     private String journal;
     private FirebaseFirestore db;
-
+    private ProgressBar progressBar;
+    private CheckBox checkBox;
+    private List<String> publicJournal;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +60,10 @@ public class JournalActivity extends AppCompatActivity{
         btnGoMain = (Button) findViewById(R.id.button);
         btnSaveJournal = (Button) findViewById(R.id.btnSaveJournal);
         btnDeleteJournal =  (Button) findViewById(R.id.btnDeleteJournal);
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+        checkBox = findViewById(R.id.checkBox);
+        publicJournal = new ArrayList<String>();
 
         // Retrieve the date from incoming intent
         Intent incomingIntent = getIntent();
@@ -80,7 +92,7 @@ public class JournalActivity extends AppCompatActivity{
                 } else {
                     Log.e("reading from DB", "task is not success");
                 }
-
+            progressBar.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -106,10 +118,10 @@ public class JournalActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 journal = editText.getText().toString();
-                Log.e("journal = ", journal);
-                File path = getFilesDir();
-                File file = new File(path, filename);
-                FileUtils fileutils = new FileUtils();
+//                Log.e("journal = ", journal);
+//                File path = getFilesDir();
+//                File file = new File(path, filename);
+//                FileUtils fileutils = new FileUtils();
                 //wrie to database
                 Map<String, Object> field = new HashMap<>();
                 field.put(date, journal);
@@ -138,6 +150,29 @@ public class JournalActivity extends AppCompatActivity{
                                 Log.e("on failure", "Error adding document", e);
                             }
                         });
+                if(checkBox.isChecked()){
+                    publicJournal.clear();
+                    publicJournal.add(0,LogInActivity.user.getEmail());
+                    publicJournal.add(1,date);
+                    publicJournal.add(2,journal);
+                    Map<String, Object> field1 = new HashMap<>();
+                    final String ID = publicJournal.get(0)+publicJournal.get(1);
+                    field1.put(ID, publicJournal);
+                    db.collection("community").document("public_journals")
+                            .set(field1,SetOptions.merge())
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void documentReference) {
+                            Log.e("onsuccess", "publicjournal added with ID: " + ID);
+                        }
+                    })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.e("on failure", "Error adding publicjournal", e);
+                                }
+                            });
+                }
 //                //path of alljournals
 //                File alljournal_file = new File(path,"AllJournals.bin");
 //
