@@ -105,7 +105,8 @@ public class AllJournalActivity extends AppCompatActivity {
                                     })
                                     .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
-                                            return;
+                                            Intent intent = new Intent(AllJournalActivity.this, MainActivity.class);
+                                            startActivity(intent);
                                         }
                                     })
                                     .show();
