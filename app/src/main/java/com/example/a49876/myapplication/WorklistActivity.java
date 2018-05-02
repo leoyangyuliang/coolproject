@@ -43,38 +43,39 @@ public class WorklistActivity extends AppCompatActivity implements Serializable 
         setTitle("Worklist");
         setContentView(R.layout.worklist_layout);
 
+        strings = new ArrayList<String>();
+        strings.add("Write your work list here");
         //initialization
-        btnSave = findViewById(R.id.btnSave);
-        strings = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
         DocumentReference ref = db.collection("users").document(LogInActivity.user.getEmail())
                 .collection("worklists").document("worklist");
         ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()&& !task.getResult().getData().isEmpty()) {
+                if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        adapter = (WorklistAdapter) document.getData().get("worklistID");
+                        strings = (ArrayList<String>) document.getData().get("worklistID");
+                        if (strings == null) {
+                            strings = new ArrayList<String>();
+                            strings.add("");
+                        }
+                        adapter = new WorklistAdapter(WorklistActivity.this, strings);
                         listView = findViewById(R.id.worklistListView);
                         listView.setAdapter(adapter);
                         Log.e("strings ",":"+strings);
                     } else {
                         Log.e("reading from DB", "no worklist found");
+                        adapter = new WorklistAdapter(WorklistActivity.this, strings);
+                        listView = findViewById(R.id.worklistListView);
+                        listView.setAdapter(adapter);
+                        Log.e("reading from DB", "task is not success");
                     }
                 } else {
-                    strings.add("to-do");
-                    adapter = new WorklistAdapter(WorklistActivity.this, strings);
-                    listView = findViewById(R.id.worklistListView);
-                    listView.setAdapter(adapter);
-                    Log.e("reading from DB", "task is not success");
+                    Log.e("task","failed when reading worklist from DB");
                 }
-
             }
         });
-
-
-
 
         Button btnAdd = findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -86,12 +87,22 @@ public class WorklistActivity extends AppCompatActivity implements Serializable 
 
 
         //update database
+        btnSave = findViewById(R.id.btnSave);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 0; i < strings.size(); i++) {
+                    System.out.println(strings.get(i));
+                }
+            }
+        });
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //wrie to database
+                //write to database
                 field = new HashMap<>();
-                field.put("worklistID",adapter);
+                field.put("worklistID", strings);
 
                 // Add a new document with a specific
                 db.collection("users").document(LogInActivity.user.getEmail())
@@ -118,8 +129,7 @@ public class WorklistActivity extends AppCompatActivity implements Serializable 
                                 Log.e("on failure", "Error adding document", e);
                             }
                         });
-            }
+                }
         });
-
     }
 }
