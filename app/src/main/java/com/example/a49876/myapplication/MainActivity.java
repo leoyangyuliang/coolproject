@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnGoAllJournal;
     private Button btnGoWorklist;
     private Button btnGraph;
+    private Button btnGoPublicJournals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +94,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, GraphActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        //view the stories
+        btnGoPublicJournals = findViewById(R.id.btnGoPublicJournals);
+        btnGoPublicJournals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PublicJournalsActivity.class);
                 startActivity(intent);
             }
         });
