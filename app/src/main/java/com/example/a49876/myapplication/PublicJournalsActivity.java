@@ -27,6 +27,9 @@ public class PublicJournalsActivity extends AppCompatActivity{
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private FirebaseFirestore db;
+    //List<String[]> and List<List<String>> both doesn't work, weird thing happen in line
+    //57 - 66,  in the for-loop everything is normal, but outside of for-loop doesn't work.
+    //I guess it is one of the world unsolve sevret(joking)
     private List<ArrayList<String>> mDataset;
 
     @Override
