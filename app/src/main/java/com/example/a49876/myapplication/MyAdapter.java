@@ -24,7 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.textview, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
@@ -34,8 +34,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.date.setText(mDataset.get(position).get(0));
-        holder.email.setText(mDataset.get(position).get(1));
+        holder.email.setText(mDataset.get(position).get(0));
+        holder.date.setText(mDataset.get(position).get(1));
         holder.journal.setText(mDataset.get(position).get(2));
         Log.e("onBindviewHolder",Integer.toString(position));
 

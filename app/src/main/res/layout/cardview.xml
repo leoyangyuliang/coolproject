@@ -1,0 +1,122 @@
+<LinearLayout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- A CardView that contains a TextView -->
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="4dp">
+    <RelativeLayout
+        android:background="@drawable/border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_margin="5dp"
+        >
+
+        <TextView
+            android:id="@+id/emailsign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:fontFamily="@font/pangolinregular"
+            android:padding="1dp"
+            android:text="User Email: "
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/email"
+            android:textSize="20sp"
+            android:fontFamily="@font/pangolinregular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:layout_toRightOf="@+id/emailsign"
+            android:textColor="@color/black"
+            android:text="hey"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:padding="2dp"
+            android:layout_below="@id/emailsign"
+            android:background="@color/line"/>
+        <TextView
+            android:id="@+id/datesign"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/pangolinregular"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailsign"
+            android:layout_marginRight="68dp"
+            android:padding="1dp"
+            android:text="Date: "/>
+        <TextView
+            android:id="@+id/date"
+            android:textSize="20sp"
+            android:fontFamily="@font/pangolinregular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/email"
+            android:layout_toRightOf="@id/datesign"
+            android:textColor="@color/black"
+            android:padding="1dp"
+            android:text="hows"/>
+        <View
+            android:layout_width="match_parent"
+            android:padding="2dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/datesign"
+            android:background="@color/line"/>
+        <TextView
+            android:id="@+id/content"
+            android:textSize="20sp"
+            android:fontFamily="@font/pangolinregular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="48dp"
+            android:layout_below="@id/datesign"
+            android:textColor="@color/black"
+            android:padding="1dp"
+            android:text="Stories: "/>
+        <TextView
+            android:id="@+id/journal"
+            android:textSize="20sp"
+            android:fontFamily="@font/pangolinregular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/content"
+            android:textColor="@color/black"
+            android:layout_below="@id/date"
+            android:padding="1dp"
+            android:text="going"/>
+        <ImageButton
+            android:id="@+id/like"
+            android:src="@drawable/thumbup1"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/journal"
+            android:text="Like"
+            />
+        <Button
+            android:id="@+id/hate"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/journal"
+            android:layout_toRightOf="@id/like"
+            android:text="Thumb down"
+            android:background="@color/imagebutton"
+            />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+    </LinearLayout>

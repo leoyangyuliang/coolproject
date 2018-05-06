@@ -1,44 +1,10 @@
-<LinearLayout
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <!-- A CardView that contains a TextView -->
-<android.support.v7.widget.CardView
-xmlns:card_view="http://schemas.android.com/apk/res-auto"
-android:id="@+id/card_view"
-android:layout_gravity="center"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-card_view:cardCornerRadius="4dp">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        >
-        <TextView
-            android:background="@drawable/border"
-            android:id="@+id/email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:padding="1dp"
-            android:text="hey"/>
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/email"
-            android:padding="1dp"
-            android:text="hows"/>
-        <TextView
-            android:id="@+id/journal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/email"
-            android:padding="1dp"
-            android:text="going"/>
-    </RelativeLayout>
-</android.support.v7.widget.CardView>
-    </LinearLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:gravity="center"
+    android:background="@drawable/border"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    />
