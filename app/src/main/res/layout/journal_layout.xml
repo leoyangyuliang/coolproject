@@ -10,11 +10,10 @@
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
-        android:layout_height="272dp"
-        android:layout_above="@+id/btnSaveJournal"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/checkBox"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:ems="10"
         android:gravity="top"
         android:inputType="textMultiLine"
@@ -43,5 +42,25 @@
         android:text="Go To Main Page"
         android:layout_centerHorizontal="true"
  />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="141dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnSaveJournal"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_toEndOf="@+id/progressBar"
+        android:layout_toRightOf="@+id/progressBar"
+        android:text="Share Journal" />
 
 </RelativeLayout>
