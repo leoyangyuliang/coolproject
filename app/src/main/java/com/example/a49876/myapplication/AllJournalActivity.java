@@ -17,7 +17,6 @@ import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -59,7 +58,7 @@ public class AllJournalActivity extends AppCompatActivity {
                         if (task.isSuccessful() && !task.getResult().isEmpty()) {
                             Log.e("task issucceess","success");
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                //Log.e("fetching all jounrals", document.getId() + " => " + document.getData());
+                                Log.e("fetching all jounrals", document.getId() + " => " + document.getData());
                                 alljournalslist.add(document.getId());
                                 progress++;
                                 if(progress/task.getResult().size()==1)
@@ -126,7 +125,7 @@ public class AllJournalActivity extends AppCompatActivity {
 //            //Log.e("alljournals",alljournals[0]);
 //
 //            //create list view
-//            ArrayAdapter adapter = new ArrayAdapter(this, R.layout.textview, alljournals);
+//            ArrayAdapter adapter = new ArrayAdapter(this, R.layout.cardview, alljournals);
 //            allJournalListView.setAdapter(adapter);
 //
 //            allJournalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
