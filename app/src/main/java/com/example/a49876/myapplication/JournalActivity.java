@@ -155,6 +155,7 @@ public class JournalActivity extends AppCompatActivity{
                     publicJournal.add(0,LogInActivity.user.getEmail());
                     publicJournal.add(1,date);
                     publicJournal.add(2,journal);
+                    publicJournal.add(3,"0");
                     Map<String, Object> field1 = new HashMap<>();
                     final String ID = publicJournal.get(0)+publicJournal.get(1);
                     field1.put(ID, publicJournal);
