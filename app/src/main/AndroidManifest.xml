@@ -25,7 +25,7 @@
         <activity android:name=".WorklistActivity"></activity>
         <activity android:name="AllJournalActivity"></activity>
         <activity android:name=".GraphActivity"></activity>
-        <activity android:name=".PublicJournalsActivity"></activity>
+        <activity android:name=".StoriesActivity"></activity>
     </application>
 
 </manifest>

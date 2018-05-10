@@ -16,7 +16,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="Calendar" />
+        android:text="Write a Journal" />
 
     <Button
         android:id="@+id/btnGoAllJournal"
@@ -25,7 +25,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/btnGoCalendar"
-        android:text="Journals" />
+        android:text="Existing Journals" />
 
 
 
@@ -38,14 +38,6 @@
         android:layout_below="@+id/btnGoAllJournal"
         android:text="Worklist" />
 
-    <Button
-        android:id="@+id/btnGoGraph"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/btnGoWorklist"
-        android:text="Graph" />
 
     <Button
         android:id="@+id/btnGoPublicJournals"
@@ -53,6 +45,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/btnGoGraph"
-        android:text="Stories" />
+        android:layout_below="@+id/btnGoWorklist"
+        android:text="Community" />
 </RelativeLayout>
