@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -49,7 +50,8 @@ public class JournalActivity extends AppCompatActivity{
     private ProgressBar progressBar;
     private CheckBox checkBox;
     private List<String> publicJournal;
-
+    private boolean isPublic;
+    private String ID;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +66,7 @@ public class JournalActivity extends AppCompatActivity{
         progressBar.setVisibility(View.VISIBLE);
         checkBox = findViewById(R.id.checkBox);
         publicJournal = new ArrayList<String>();
+        isPublic = false;
 
         // Retrieve the date from incoming intent
         Intent incomingIntent = getIntent();
@@ -83,6 +86,7 @@ public class JournalActivity extends AppCompatActivity{
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         journal = document.getData().get(date).toString();
+                        isPublic = (boolean)document.getData().get("isPublic");
                         Log.e("journal", journal);
                         editText.setText(journal);
                     } else {
@@ -92,7 +96,10 @@ public class JournalActivity extends AppCompatActivity{
                 } else {
                     Log.e("reading from DB", "task is not success");
                 }
-            progressBar.setVisibility(View.INVISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+                if(isPublic){
+                    checkBox.setChecked(isPublic);
+                }
             }
         });
 
@@ -123,8 +130,62 @@ public class JournalActivity extends AppCompatActivity{
 //                File file = new File(path, filename);
 //                FileUtils fileutils = new FileUtils();
                 //wrie to database
+                if(checkBox.isChecked()){
+                    publicJournal.clear();
+                    publicJournal.add(0,LogInActivity.user.getEmail());
+                    publicJournal.add(1,date);
+                    publicJournal.add(2,journal);
+                    publicJournal.add(3,"0");
+                    Map<String, Object> field1 = new HashMap<>();
+                    ID = publicJournal.get(0)+publicJournal.get(1);
+                    field1.put(ID, publicJournal);
+                    db.collection("community").document("public_journals")
+                            .set(field1,SetOptions.merge())
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void documentReference) {
+                                    Log.e("onsuccess", "publicjournal added with ID: " + ID);
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.e("on failure", "Error adding publicjournal", e);
+                                }
+                            });
+                    isPublic = true;
+                }
+                else if(!checkBox.isChecked()){
+                    publicJournal.clear();
+                    publicJournal.add(0,LogInActivity.user.getEmail());
+                    publicJournal.add(1,date);
+                    ID = publicJournal.get(0)+publicJournal.get(1);
+                    isPublic = false;
+                    Map<String,Object> updates = new HashMap<>();
+                    updates.put(ID, FieldValue.delete());
+                    DocumentReference docRef = db.collection("community")
+                            .document("public_journals");
+                    //since this is a "nested field", I need to put SetOptions.merge() to delete the field
+                    //other wise it won't work.
+                        docRef
+                            .set(updates,SetOptions.merge())
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void documentReference) {
+                                    Log.e("onsuccess", "publicjournal deleted with ID: " + ID);
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.e("on failure", "Error deleting publicjournal", e);
+                                }
+                            });
+                }
+
                 Map<String, Object> field = new HashMap<>();
                 field.put(date, journal);
+                field.put("isPublic", isPublic);
                 // Add a new document with a specific
                 db.collection("users").document(LogInActivity.user.getEmail()).collection("journals").document(date)
                         .set(field, SetOptions.merge())
@@ -150,30 +211,7 @@ public class JournalActivity extends AppCompatActivity{
                                 Log.e("on failure", "Error adding document", e);
                             }
                         });
-                if(checkBox.isChecked()){
-                    publicJournal.clear();
-                    publicJournal.add(0,LogInActivity.user.getEmail());
-                    publicJournal.add(1,date);
-                    publicJournal.add(2,journal);
-                    publicJournal.add(3,"0");
-                    Map<String, Object> field1 = new HashMap<>();
-                    final String ID = publicJournal.get(0)+publicJournal.get(1);
-                    field1.put(ID, publicJournal);
-                    db.collection("community").document("public_journals")
-                            .set(field1,SetOptions.merge())
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void documentReference) {
-                            Log.e("onsuccess", "publicjournal added with ID: " + ID);
-                        }
-                    })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.e("on failure", "Error adding publicjournal", e);
-                                }
-                            });
-                }
+
 //                //path of alljournals
 //                File alljournal_file = new File(path,"AllJournals.bin");
 //
@@ -239,7 +277,8 @@ public class JournalActivity extends AppCompatActivity{
 //                                    fileutils.writeToBinary(ary,path,"AllJournals.bin");
 //                                }
                                 db.collection("users").document(LogInActivity.user.getEmail())
-                                        .collection("journals").document(date).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        .collection("journals").document(date)
+                                        .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Log.d(TAG, "DocumentSnapshot successfully deleted!");

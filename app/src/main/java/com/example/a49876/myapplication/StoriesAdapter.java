@@ -1,11 +1,8 @@
 package com.example.a49876.myapplication;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,13 +13,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.server.converter.StringToIntConverter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHolder> {
     private List<ArrayList<String>> mDataset;
     private Context context;
     private ImageButton imageButton;
@@ -56,7 +50,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
     }
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<ArrayList<String>> myDataset, Context context) {
+    public StoriesAdapter(List<ArrayList<String>> myDataset, Context context) {
         this.mDataset = myDataset;
         for(int i =0; i < mDataset.size(); i++){
             for(int j=i; j<myDataset.size(); j++){
@@ -74,7 +68,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public StoriesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent,
                 false);

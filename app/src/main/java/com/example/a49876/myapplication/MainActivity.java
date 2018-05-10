@@ -2,7 +2,6 @@ package com.example.a49876.myapplication;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -104,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         btnGoPublicJournals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, PublicJournalsActivity.class);
+                Intent intent = new Intent(MainActivity.this, StoriesActivity.class);
                 startActivity(intent);
             }
         });
