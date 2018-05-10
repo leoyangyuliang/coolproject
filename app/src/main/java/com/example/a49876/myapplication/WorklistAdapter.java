@@ -3,6 +3,7 @@ package com.example.a49876.myapplication;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,8 +52,10 @@ public class WorklistAdapter extends ArrayAdapter<String> {
         btnRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                workEntries.remove(position);
-                notifyDataSetChanged();
+                if (parent.getChildCount() > 1) {
+                    workEntries.remove(position);
+                    notifyDataSetChanged();
+                }
             }
         });
         return convertView;

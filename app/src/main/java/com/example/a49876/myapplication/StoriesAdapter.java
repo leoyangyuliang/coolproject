@@ -151,7 +151,7 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.ViewHold
                                     Log.e("on failure", "Error updating ID", e);
                                 }
                             });
-                    Toast.makeText(context,"I Don't Like It No More!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context,"I don't like it anymore!", Toast.LENGTH_LONG).show();
                 }
             }
         });

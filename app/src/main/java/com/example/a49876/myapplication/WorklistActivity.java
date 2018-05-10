@@ -89,18 +89,8 @@ public class WorklistActivity extends AppCompatActivity implements Serializable 
             }
         });
 
-
         //update database
         btnSave = findViewById(R.id.btnSave);
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (int i = 0; i < strings.size(); i++) {
-                    System.out.println(strings.get(i));
-                }
-            }
-        });
-
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,7 +107,7 @@ public class WorklistActivity extends AppCompatActivity implements Serializable 
                             public void onSuccess(Void documentReference) {
                                 AlertDialog alertDialog = new AlertDialog.Builder(WorklistActivity.this).create();
                                 alertDialog.setTitle("Success!");
-                                alertDialog.setMessage("Your worklists has been saved.");
+                                alertDialog.setMessage("Your worklist has been saved.");
                                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok",
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
