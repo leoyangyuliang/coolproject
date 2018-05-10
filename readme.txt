@@ -9,4 +9,4 @@ need to do:
 - need to render all the public journal in a pleasure way
 - comments for public journals
 
-![Alt text](./login.png)
+![Alt text](coolproject/pics/login.pngraw=true "Title")
