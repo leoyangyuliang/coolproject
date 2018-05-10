@@ -9,4 +9,4 @@ need to do:
 - need to render all the public journal in a pleasure way
 - comments for public journals
 
-![alt text](coolproject/pics/login.png)
+![alt text](https://raw.githubusercontent.com/leoyangyuliang/coolproject/master/pics/login.png)
