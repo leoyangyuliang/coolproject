@@ -56,38 +56,37 @@ public class AllJournalActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful() && !task.getResult().isEmpty()) {
-                            Log.e("task issucceess","success");
+                            Log.e("task issucceess", "success");
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.e("fetching all jounrals", document.getId() + " => " + document.getData());
                                 alljournalslist.add(document.getId());
                                 progress++;
-                                if(progress/task.getResult().size()==1)
+                                if (progress / task.getResult().size() == 1) {
                                     progressBar.setVisibility(View.INVISIBLE);
+                                }
                             }
 
-                                //convert to string array
-                                alljournals = alljournalslist.toArray(new String[alljournalslist.size()]);
-                                //create list view
-                                ArrayAdapter adapter = new ArrayAdapter(AllJournalActivity.this,
-                                        R.layout.textview, alljournals);
-                                allJournalListView.setAdapter(adapter);
+                            //convert to string array
+                            alljournals = alljournalslist.toArray(new String[alljournalslist.size()]);
+                            //create list view
+                            ArrayAdapter adapter = new ArrayAdapter(AllJournalActivity.this,
+                                    R.layout.textview, alljournals);
+                            allJournalListView.setAdapter(adapter);
 
-                                allJournalListView.setOnItemClickListener(
-                                        new AdapterView.OnItemClickListener() {
-                                            @Override
-                                            public void onItemClick(AdapterView<?> adapterView,
-                                                                    View view, int i, long l) {
-                                                String date = String.valueOf(adapterView.getItemAtPosition(i));
-                                                Log.e("show date", date);
-                                                Intent intent = new Intent(AllJournalActivity.this,
-                                                        JournalActivity.class);
-                                                intent.putExtra("date", date);
-                                                startActivity(intent);
-                                            }
-                                        });
-
-                        }
-                        else {
+                            allJournalListView.setOnItemClickListener(
+                                    new AdapterView.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(AdapterView<?> adapterView,
+                                                                View view, int i, long l) {
+                                            String date = String.valueOf(adapterView.getItemAtPosition(i));
+                                            Log.e("show date", date);
+                                            Intent intent = new Intent(AllJournalActivity.this,
+                                                    JournalActivity.class);
+                                            intent.putExtra("date", date);
+                                            startActivity(intent);
+                                        }
+                                    });
+                        } else {
                             Log.e("can't get all journals", "journals is empty or task is not success");
                             AlertDialog.Builder builder;
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
