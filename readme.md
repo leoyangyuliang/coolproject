@@ -10,3 +10,8 @@ need to do:
 - comments for public journals
 
 ![alt text](https://raw.githubusercontent.com/leoyangyuliang/coolproject/master/pics/login.png)
+![alt text](coolproject/pics/pick_date.png)
+![alt text]()
+![alt text]()
+![alt text]()
+![alt text]()
