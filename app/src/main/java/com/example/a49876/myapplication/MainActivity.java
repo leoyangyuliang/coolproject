@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnGoCalendar;
     private Button btnGoAllJournal;
     private Button btnGoWorklist;
-    private Button btnGraph;
+    //private Button btnGraph;
     private Button btnGoPublicJournals;
 
     @Override
@@ -88,14 +88,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // View the example graph
-        btnGraph = findViewById(R.id.btnGoGraph);
-        btnGraph.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, GraphActivity.class);
-                startActivity(intent);
-            }
-        });
+        //btnGraph = findViewById(R.id.btnGoGraph);
+//        btnGraph.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, GraphActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
         //view the stories
