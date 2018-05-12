@@ -11,33 +11,20 @@ This is an Android phone application that combines several useful utilities into
 * Firestore database
 
 ### Visuals
-This is the log in page of this app, users can easily sign up with any email they prefer
-![alt text](https://raw.githubusercontent.com/leoyangyuliang/coolproject/master/pics/login.png)
+Log in, or sign up<br/>
+![](https://raw.githubusercontent.com/leoyangyuliang/coolproject/Gary/pics/login.png)
 
-After Logged in, this main page will shows up, users can start writing their first journal or work list, or they can go to community to check out other public journals/stories. 
+After logging in, users can select from several options<br/>
+![](https://raw.githubusercontent.com/leoyangyuliang/coolproject/Gary/pics/main.png)
 
-![alt text](https://raw.githubusercontent.com/leoyangyuliang/coolproject/master/pics/main_page.png)
+Choose a date to write a new journal<br/>
+![](https://raw.githubusercontent.com/leoyangyuliang/coolproject/Gary/pics/calendar.png)
 
+View all your current journals<br/>
+![](https://raw.githubusercontent.com/leoyangyuliang/coolproject/Gary/pics/all_journals.png)
 
-These pictures below shows the user interface that each botton on the main page takes users to.
+Create entries for your work list<br/>
+![](https://raw.githubusercontent.com/leoyangyuliang/coolproject/Gary/pics/work_list.png)
 
-1. Pick a date to start a jounal
-
-![alt text](https://raw.githubusercontent.com/leoyangyuliang/coolproject/master/pics/pick_date.png)
-
-After finish with journal, users can chose to share it and save it, or if users want to delete it 
-
-![alt text](https://raw.githubusercontent.com/leoyangyuliang/coolproject/master/pics/write_journal.png)
-
-2. This is where users can see all the journals they have
-
-![alt text](https://raw.githubusercontent.com/leoyangyuliang/coolproject/master/pics/exsiting_journals.png)
-
-3. Work list, best tool for life, always make a list
-
-![alt text](https://raw.githubusercontent.com/leoyangyuliang/coolproject/master/pics/worklist.png)
-
-4. Share stories with the community
-
-![alt text](https://raw.githubusercontent.com/leoyangyuliang/coolproject/master/pics/community.png)
-
+Users can publicize their journals to the community<br/>
+![](https://raw.githubusercontent.com/leoyangyuliang/coolproject/Gary/pics/community.png)
