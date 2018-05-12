@@ -1,11 +1,16 @@
-Main features of project:
-Journal
-work list
+# Super Recorder
 
-Data storage:
-firestore
+### Description
+This is an Android phone application that combines several useful utilities into one for easy accessibility. It is built with Android Studio IDE and Java programming language.
 
+### Features
+* User accounts
+* Journal
+* Work list
+* Community journals
+* Firestore database
 
+### Visuals
 This is the log in page of this app, users can easily sign up with any email they prefer
 ![alt text](https://raw.githubusercontent.com/leoyangyuliang/coolproject/master/pics/login.png)
 
